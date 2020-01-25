@@ -1,2 +1,8 @@
 ---
 specfile_path: nyancat.spec
+jobs:
+- job: copr_build
+  metadata:
+    targets:
+    - fedora-all
+  trigger: pull_request
