@@ -6,3 +6,10 @@ jobs:
     targets:
     - fedora-all
   trigger: pull_request
+upstream_ref: 1.5.2
+patch_generation_ignore_paths:
+- README.md
+- .github/
+- .gitignore
+- Makefile
+
