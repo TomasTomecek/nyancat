@@ -1,13 +1,14 @@
 Name: nyancat
 Version: 1.5.2
-Release: 1%{?dist}
-Summary: Nyancat rendered in your terminal.
+Release: 2%{?dist}
+Summary: Nyancat rendered in your terminal
 
 License: NCSA
 URL:     https://github.com/klange/nyancat
 Source0: %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires: gcc
+BuildRequires: gawk
 
 %description
 Nyan Cat is the name of a YouTube video uploaded in April 2011, which became an
@@ -22,6 +23,7 @@ trail behind it.
 
 %build
 make %{?_smp_mflags} nyancat
+awk '1;/\*\//{exit}' < src/nyancat.c > LICENSE
 
 
 %install
@@ -34,15 +36,18 @@ install -m 0755 src/nyancat %{buildroot}/%{_bindir}/
 
 
 %files
-%doc
-%license
+%license LICENSE
 %{_bindir}/nyancat
-# %%{_mandir}/man1/nyancat.1.gz
-
+# %%{_mandir}/man1/nyancat.1*
 
 
 %changelog
+* Tue Jan 28 2020 Tomas Tomecek <ttomecek@redhat.com> - 1.5.2-2
+- improve packaging:
+  - summary doesn't end with a dot
+  - files -> manpage uses a wildcard now
+  - extract license with awk
+
 * Fri Jan 24 2020 Tomas Tomecek <ttomecek@redhat.com> - 1.5.2
 - Initial RPM packaging
-
 
