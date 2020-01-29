@@ -19,18 +19,18 @@ trail behind it.
 
 %prep
 %autosetup
+awk '1;/\*\//{exit}' < src/nyancat.c > LICENSE
 
 
 %build
 make %{?_smp_mflags} nyancat
-awk '1;/\*\//{exit}' < src/nyancat.c > LICENSE
 
 
 %install
 mkdir -p %{buildroot}/%{_bindir}/
 install -m 0755 src/nyancat %{buildroot}/%{_bindir}/
 mkdir -p %{buildroot}/%{_mandir}/man1/
-install -m 0544 nyancat.1 %{buildroot}/%{_mandir}/man1/
+install -m 0644 nyancat.1 %{buildroot}/%{_mandir}/man1/
 
 
 %files
