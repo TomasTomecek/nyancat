@@ -1,6 +1,6 @@
 Name:          nyancat
 Version:       1.5.2
-Release:       3%{?dist}
+Release:       4%{?dist}
 Summary:       Nyancat rendered in your terminal
 
 License:       NCSA
@@ -23,6 +23,7 @@ awk '1;/\*\//{exit}' < src/nyancat.c > LICENSE
 
 
 %build
+%set_build_flags
 make %{?_smp_mflags} nyancat
 
 
@@ -41,6 +42,11 @@ install -m 0644 nyancat.1 %{buildroot}/%{_mandir}/man1/
 
 
 %changelog
+* Tue Mar 24 2020 Tomas Tomecek <ttomecek@redhat.com> - 1.5.2-4
+- correct manpage perms
+- use %%set_build_flags before make
+- move LICENSE generation to %%prep
+
 * Wed Jan 29 2020 Tomas Tomecek <ttomecek@redhat.com> - 1.5.2-3
 - include manpage
 
