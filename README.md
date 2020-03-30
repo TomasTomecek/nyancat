@@ -4,6 +4,9 @@ Nyancat rendered in your terminal.
 
 [![Nyancats](http://nyancat.dakko.us/nyancat.png)](http://nyancat.dakko.us/nyancat.png)
 
+---
+This repository is not a fork - it contains Fedora downstream packaging content so it can be built in the distribution.
+
 ## Distributions
 
 Nyancat is available in the following distributions:
