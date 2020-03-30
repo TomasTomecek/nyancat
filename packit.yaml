@@ -1,0 +1,9 @@
+---
+specfile_path: nyancat.spec
+upstream_ref: 1.5.2
+patch_generation_ignore_paths:
+- README.md
+- .github/
+- .gitignore
+- Makefile
+
